@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("/fonts/fave-script-bold.tff");
+@import url("/fonts/Foxrights.tff");
+
+@layer base {
+  @font-face {
+    font-family: "Fave Script Bold";
+    src: url("/fonts/fave-script-bold.tff") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Foxrights";
+    src: url("/fonts/Foxrights.tff") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
 :root {
   --background: #fde7e5;
   --foreground: #d22026;
@@ -18,5 +37,5 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Foxrights, Helvetica, sans-serif;
 }

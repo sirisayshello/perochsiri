@@ -8,6 +8,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        fave: "Fave Script Bold",
+        foxrights: "Foxrights",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
