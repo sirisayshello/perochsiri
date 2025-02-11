@@ -5,6 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Per och Siri",
   description: "Per och Siris bröllop",
+  icons: ["glass.svg"],
 };
 
 export default function RootLayout({
