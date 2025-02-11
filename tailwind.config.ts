@@ -9,8 +9,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        fave: "Fave Script Bold",
-        foxrights: "Foxrights",
+        fave: "var(--fave)",
+        foxrights: "var(--foxrights)",
       },
       colors: {
         background: "var(--background)",
