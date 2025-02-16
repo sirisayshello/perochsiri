@@ -17,6 +17,7 @@ export default {
         foreground: "var(--foreground)",
         accent: "var(--accent)",
         accentShadow: "var(--accent-shadow)",
+        muted: "var(--muted)",
       },
     },
   },

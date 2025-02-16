@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 const NavItem = ({ children, href }: { children: ReactNode; href: string }) => (
   <Link
     href={href}
-    className="text-3xl font-fave hover:text-white transition-colors"
+    className="text-2xl sm:text-3xl font-fave hover:text-muted transition-colors"
   >
     {children}
   </Link>
