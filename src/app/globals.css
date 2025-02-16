@@ -6,6 +6,7 @@
   --background: #fde7e5;
   --foreground: #d22026;
   --accent: #d22026;
+  --accentShadow: #d2202633;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +14,7 @@
     --background: #fde7e5;
     --foreground: #d22026;
     --accent: #d22026;
+    --accentShadow: #d2202699;
   }
 }
 
