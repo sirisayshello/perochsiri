@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 
+export const NAV_HEIGHT = 48;
+
 const NavItem = ({ children, href }: { children: ReactNode; href: string }) => (
   <Link
     href={href}

@@ -8,7 +8,7 @@ type BottleProps = {
 export const Bottle = ({ rotation, dragRotation }: BottleProps) => {
   return (
     <motion.img
-      src="/bottle.png"
+      src="/images/bottle.png"
       alt="bottle"
       className="w-8 lg:w-12"
       initial={{ opacity: 0, scale: 0.5, rotate: rotation }}
