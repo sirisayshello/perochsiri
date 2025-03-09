@@ -2,6 +2,8 @@
 
 import { FormEventHandler, useState } from "react";
 import { useIsAdmin } from "../hooks/useIsAdmin";
+import { Input } from "../components/Input";
+import { Button } from "../components/Button";
 
 const SUPER_SECRET_PASSWORD = "mummaochbo";
 
@@ -43,21 +45,11 @@ export default function Admin() {
           {error && <p className="text-red-500">{error}</p>}
           {!isAdmin ? (
             <div>
-              <input
-                className="rounded-full w-48 p-2 px-6 text-4xl"
-                type="password"
-                name="password"
-                id="password"
-              />
-              <button
-                type="submit"
-                className="rounded-full bg-accent w-full text-white p-2 px-6 mt-4 text-4xl flex justify-center"
-              >
-                Log in
-              </button>
+              <Input type="password" name="password" id="password" />
+              <Button type="submit">Logga in</Button>
             </div>
           ) : (
-            <p className="text-4xl">Logged in</p>
+            <p className="text-4xl">Redan inloggad</p>
           )}
         </div>
       </form>

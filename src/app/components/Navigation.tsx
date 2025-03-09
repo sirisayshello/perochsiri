@@ -18,10 +18,11 @@ export const Navigation = () => {
       style={{
         boxShadow: "0px -5px 12px var(--accentShadow)",
       }}
-      className="flex justify-evenly fixed z-10 bottom-0 w-full p-2"
+      className="flex justify-evenly fixed z-10 bottom-0 w-full p-2 bg-background"
     >
       <NavItem href="/onskelista">Önskelista</NavItem>
       <NavItem href="/schema">Dagens Schema</NavItem>
+      <NavItem href="/rsvp">RSVP</NavItem>
       <NavItem href="/information">Information</NavItem>
     </nav>
   );
