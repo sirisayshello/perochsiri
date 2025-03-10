@@ -1,5 +1,13 @@
-export const useIsAdmin = () => {
-  console.log("useIsAdmin", document.cookie);
+'use client'
 
-  return document.cookie.includes("admin=bomumma");
+import { useLayoutEffect, useState } from "react";
+
+export const useIsAdmin = () => {
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useLayoutEffect(() => {
+    const hasAdminCookie = document?.cookie.includes("admin=bomumma");
+    setIsAdmin(hasAdminCookie);
+  })
+  return isAdmin
 };
