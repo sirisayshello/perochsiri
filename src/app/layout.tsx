@@ -5,8 +5,8 @@ import { HomeLogo } from "./components/HomeLogo";
 import { Navigation } from "./components/Navigation";
 
 export const metadata: Metadata = {
-  title: "Per och Siri",
-  description: "Per och Siris bröllop",
+  title: "Siri och Per",
+  description: "Siri och Pers bröllop 2025",
   icons: ["glass.svg"],
 };
 

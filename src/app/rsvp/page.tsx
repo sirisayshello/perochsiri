@@ -4,25 +4,33 @@ import { ChangeEventHandler, FormEventHandler, useState } from "react";
 import { H1 } from "../components/H1";
 import { Input } from "../components/Input";
 import { Label } from "../components/Label";
-import { Select } from "../components/Select";
 import { Button } from "../components/Button";
 import { useRSVP } from "./useRSVP";
 import { useIsAdmin } from "../hooks/useIsAdmin";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
 
 export default function RSVP() {
   const { saveRSVP, rsvp } = useRSVP();
-  const [numberOfGuests, setNumberOfGuests] = useState(0);
-  const isAdmin = useIsAdmin();
+  const [numberOfGuests, setNumberOfGuests] = useState<number>();
 
-  const handleNumberOfGuestsChange: ChangeEventHandler<HTMLSelectElement> = (
-    e
-  ) => {
-    const value = parseInt(e.target.value, 10);
+  const handleNumberOfGuestsChange = (event: SelectChangeEvent<number>) => {
+    if (typeof event.target.value === "string") {
+      const value = parseInt(event.target.value);
+      setNumberOfGuests(value);
+      return;
+    }
+    const value = event.target.value;
 
     setNumberOfGuests(value);
   };
 
-  const guestArray = [...Array(numberOfGuests)];
+  const guestArray = numberOfGuests ? [...Array(numberOfGuests)] : [];
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
@@ -38,38 +46,27 @@ export default function RSVP() {
     await saveRSVP(guests);
   };
 
-  if (isAdmin) {
-    console.log('rsvp:', rsvp);
-
-    return <div className="flex flex-col items-center h-full">
-      <H1>RSVP Admin</H1>
-      {rsvp?.map((guest) => (
-        <div className="flex gap-2">
-          <p>{guest.name}</p>
-          <p>{guest.food}</p>
-          <p>{guest.allergies}</p>
-        </div>
-      ))}
-    </div>
-  }
-
   return (
     <div className="flex flex-col items-center h-full">
-      <H1>RSVP</H1>
-      <h2>Kommer ni?</h2>
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-[120px,1fr] gap-4 mb-6">
-          <Label htmlFor="antal">Antal som kommer</Label>
-          <Select id="antal" onChange={handleNumberOfGuestsChange}>
-            <option disabled selected hidden>
-              Välj antal
-            </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+      <h1>OSA</h1>
+
+      <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
+        <FormControl>
+          <InputLabel id="demo-simple-select-label">Antal</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={numberOfGuests}
+            label="Antal"
+            onChange={handleNumberOfGuestsChange}
+          >
+            <MenuItem value={1}>1</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+            <MenuItem value={4}>4</MenuItem>
           </Select>
-        </div>
+        </FormControl>
+
         {guestArray.map((_, index) => (
           <div
             className="grid grid-cols-[120px,1fr] gap-4"
@@ -91,7 +88,9 @@ export default function RSVP() {
           </div>
         ))}
 
-        {numberOfGuests > 0 && <Button type="submit">Skicka</Button>}
+        {numberOfGuests && numberOfGuests > 0 && (
+          <Button type="submit">Skicka</Button>
+        )}
       </form>
     </div>
   );
