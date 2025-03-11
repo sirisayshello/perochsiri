@@ -1,12 +1,5 @@
 "use client";
 
-import { ChangeEventHandler, FormEventHandler, useState } from "react";
-import { H1 } from "../components/H1";
-import { Input } from "../components/Input";
-import { Label } from "../components/Label";
-import { Button } from "../components/Button";
-import { useRSVP } from "./useRSVP";
-import { useIsAdmin } from "../hooks/useIsAdmin";
 import {
   FormControl,
   InputLabel,
@@ -14,9 +7,14 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
+import { FormEventHandler, useState } from "react";
+import { Button } from "../components/Button";
+import { Input } from "../components/Input";
+import { Label } from "../components/Label";
+import { useRSVP } from "./useRSVP";
 
 export default function RSVP() {
-  const { saveRSVP, rsvp } = useRSVP();
+  const { saveRSVP } = useRSVP();
   const [numberOfGuests, setNumberOfGuests] = useState<number>();
 
   const handleNumberOfGuestsChange = (event: SelectChangeEvent<number>) => {
@@ -41,6 +39,7 @@ export default function RSVP() {
       name: formData.get(`g-${index}-name`) as string,
       food: formData.get(`g-${index}-food`) as string,
       allergies: formData.get(`g-${index}-allergies`) as string,
+      attending: true,
     }));
 
     await saveRSVP(guests);
@@ -49,7 +48,6 @@ export default function RSVP() {
   return (
     <div className="flex flex-col items-center h-full">
       <h1>OSA</h1>
-
       <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
         <FormControl>
           <InputLabel id="demo-simple-select-label">Antal</InputLabel>

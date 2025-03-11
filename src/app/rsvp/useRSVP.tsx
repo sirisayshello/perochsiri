@@ -9,12 +9,12 @@ type RSVP = {
     name: string;
     food: string;
     allergies: string;
+    attending: boolean;
 }
 
 export const useRSVP = () => {
     const isAdmin = useIsAdmin();
     const [rsvp, setRSVP] = useState<RSVP[]>([]);
-    const rsvpApiUrl = process.env.RSVP_API_URL ?? "";
 
 
     const saveRSVP = async (guests: Omit<RSVP, 'id'>[]) => {
@@ -37,12 +37,8 @@ export const useRSVP = () => {
         }
         const fetchRSVP = async () => {
             const res = await fetch("https://baltzar-rsvp.web.val.run");
-            console.log('url:', rsvpApiUrl);
-
             if (res.ok) {
                 const data = await res.json();
-
-                console.log('fetching', data);
 
                 setRSVP(data.rsvp);
             }
