@@ -22,7 +22,7 @@ export const Navigation = () => {
     >
       <NavItem href="/onskelista">Önskelista</NavItem>
       <NavItem href="/schema">Dagens Schema</NavItem>
-      <NavItem href="/rsvp">RSVP</NavItem>
+      <NavItem href="/rsvp">OSA</NavItem>
       <NavItem href="/information">Information</NavItem>
     </nav>
   );
