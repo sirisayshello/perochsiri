@@ -3,7 +3,6 @@
 import { ReactNode } from "react";
 import { useIsAdmin } from "../hooks/useIsAdmin";
 import { useRSVP } from "../rsvp/useRSVP";
-import { H1 } from "../components/H1";
 
 const Column = ({ children }: { children?: ReactNode }) => (
     <p className="text-4xl text-center">{children}</p>
@@ -23,7 +22,7 @@ export default function () {
     const total = rsvp.filter((guest) => guest.attending).length;
 
     return (<div className="flex flex-col items-center h-full">
-        <H1>RSVP Admin</H1>
+        <h1>RSVP Admin</h1>
         <div className="grid grid-cols-5 w-96 border-b-2 border-accent">
             <Column>ID</Column>
             <Column>Namn</Column>
@@ -40,7 +39,7 @@ export default function () {
                 <Column>{guest.attending ? "Ja" : "Nej"}</Column>
             </div>
         ))}
-        <H1>Totalt</H1>
+        <h1>Totalt</h1>
         <div className="grid grid-cols-4 w-96 border-b-2 border-accent">
             <Column>Totalt</Column>
             <Column>Kött</Column>

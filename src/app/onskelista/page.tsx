@@ -1,4 +1,3 @@
-import { H1 } from "../components/H1";
 import { WineGlass } from "../components/WineGlass";
 import { useGifts } from "./useGifts";
 
@@ -8,7 +7,7 @@ export default async function WishList() {
   return (
     <div className="flex flex-col justify-between h-full">
       <div className="flex flex-col items-center h-full">
-        <H1>Önskelista</H1>
+        <h1>Önskelista</h1>
 
         <ul className="text-5xl">
           {gifts.map((gift) => {

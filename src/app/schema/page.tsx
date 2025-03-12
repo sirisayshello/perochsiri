@@ -1,11 +1,10 @@
-import { H1 } from "../components/H1";
 import { SparklingWine } from "../components/SparklingWine";
 
 export default function WishList() {
   return (
     <div className="flex flex-col justify-between h-full">
       <div className="flex items-center flex-col">
-        <H1>Dagens Schema</H1>
+        <h1>Dagens Schema</h1>
         <ul className="text-4xl flex flex-col mt-8 gap-4">
           <li>14:00 - Trädgårdsmingel på Gathenheimska Huset</li>
           <li>15:00 - Vigsel</li>

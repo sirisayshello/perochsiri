@@ -24,3 +24,9 @@ body {
   background: var(--background);
   font-family: Foxrights, Helvetica, sans-serif;
 }
+
+@layer components {
+  h1 {
+    @apply font-fave text-[clamp(4rem,2.404rem+5.106vw,7rem)];
+  }
+}
