@@ -21,7 +21,7 @@ export default function RootLayout({
         className={`${foxrights.variable} ${fave.variable} bg-background antialiased `}
       >
         <HomeLogo />
-        <main className="h-[calc(100dvh-60px)] p-4 md:p-8 pt-8">
+        <main className="h-[calc(100dvh-60px)] p-4 pt-8 md:p-8 md:pt-14">
           {children}
         </main>
         <Navigation />
