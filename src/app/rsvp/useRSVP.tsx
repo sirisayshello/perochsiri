@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useIsAdmin } from "../hooks/useIsAdmin";
 
 
-type RSVP = {
+export type RSVP = {
     id: number;
     name: string;
     food: string;

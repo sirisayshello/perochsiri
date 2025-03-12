@@ -7,6 +7,7 @@
   --foreground: #d22026;
   --accent: #d22026;
   --accentShadow: #d2202633;
+  --highlight: #ffe1e2;
   --muted: #de7579;
 }
 
@@ -28,5 +29,8 @@ body {
 @layer components {
   h1 {
     @apply font-fave text-[clamp(4rem,2.404rem+5.106vw,7rem)];
+  }
+  h2 {
+    @apply text-4xl font-foxrights text-accent;
   }
 }
