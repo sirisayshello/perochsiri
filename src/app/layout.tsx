@@ -1,4 +1,4 @@
-import { fave, foxrights } from "@/fonts";
+import { fave, foxrights, RobotoFont } from "@/fonts";
 import type { Metadata } from "next";
 import "./globals.css";
 import { HomeLogo } from "./components/HomeLogo";
@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${foxrights.variable} ${fave.variable} bg-background antialiased `}
+        className={`${foxrights.variable} ${fave.variable} ${RobotoFont.variable} bg-background antialiased `}
       >
         <HomeLogo />
         <main className="h-[calc(100dvh-60px)] p-4 pt-8 md:p-8 md:pt-14">

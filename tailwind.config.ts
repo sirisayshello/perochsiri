@@ -11,6 +11,7 @@ export default {
       fontFamily: {
         fave: "var(--fave)",
         foxrights: "var(--foxrights)",
+        roboto: "var(--roboto)",
       },
       colors: {
         background: "var(--background)",
