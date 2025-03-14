@@ -11,11 +11,11 @@ export const HomeLogo = () => {
   const delay = path === "/" ? 0.6 : 0.3;
 
   return (
-    <Link href="/">
+    <Link href="/" className="z-30">
       <motion.div
         animate={{ x }}
         transition={{ delay }}
-        className="font-fave absolute text-2xl p-2"
+        className="font-fave absolute text-2xl p-2 z-30"
       >
         Siri & Per
       </motion.div>

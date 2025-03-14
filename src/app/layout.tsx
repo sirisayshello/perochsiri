@@ -2,7 +2,7 @@ import { fave, foxrights, RobotoFont } from "@/fonts";
 import type { Metadata } from "next";
 import "./globals.css";
 import { HomeLogo } from "./components/HomeLogo";
-import { Navigation } from "./components/Navigation";
+import { Navigation } from "./components/Navigation/Navigation";
 
 export const metadata: Metadata = {
   title: "Siri och Per",
@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${foxrights.variable} ${fave.variable} ${RobotoFont.variable} bg-background antialiased `}
+        className={`${foxrights.variable} ${fave.variable} ${RobotoFont.variable} bg-background antialiased relative`}
       >
         <HomeLogo />
         <main className="h-[calc(100dvh-60px)] p-4 pt-8 md:p-8 md:pt-14">
