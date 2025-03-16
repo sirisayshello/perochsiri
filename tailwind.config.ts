@@ -8,9 +8,17 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        fave: "var(--fave)",
+        foxrights: "var(--foxrights)",
+        roboto: "var(--roboto)",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        accent: "var(--accent)",
+        accentShadow: "var(--accent-shadow)",
+        muted: "var(--muted)",
       },
     },
   },
