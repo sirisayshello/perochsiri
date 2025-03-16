@@ -15,10 +15,11 @@ export type RSVP = {
 export const useRSVP = () => {
     const isAdmin = useIsAdmin();
     const [rsvp, setRSVP] = useState<RSVP[]>([]);
+    const apiUrl = process.env.NEXT_PUBLIC_RSVP_API_URL ?? '';
 
 
     const saveRSVP = async (guests: Omit<RSVP, 'id'>[]) => {
-        const res = await fetch("https://baltzar-rsvp.web.val.run", {
+        const res = await fetch(apiUrl, {
             method: "POST",
             body: JSON.stringify({ guests }),
         });
@@ -36,7 +37,7 @@ export const useRSVP = () => {
             return;
         }
         const fetchRSVP = async () => {
-            const res = await fetch("https://baltzar-rsvp.web.val.run");
+            const res = await fetch(apiUrl);
             if (res.ok) {
                 const data = await res.json();
 

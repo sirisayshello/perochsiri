@@ -1,4 +1,4 @@
-const giftApiUrl = process.env.GIFT_API_URL ?? "";
+const giftApiUrl = process.env.NEXT_PUBLIC_GIFT_API_URL ?? "";
 
 type Gift = {
   name: string;
