@@ -1,4 +1,4 @@
-const giftApiUrl = process.env.NEXT_PUBLIC_GIFT_API_URL ?? "";
+const giftApiUrl = "https://baltzar-wedding.web.val.run";
 
 type Gift = {
   name: string;
