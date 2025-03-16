@@ -36,6 +36,13 @@ export default function Information() {
               .
             </p>
           </div>
+          <div className="mt-6 w-full">
+            <h2>Övrigt</h2>
+            <p className="font-roboto">
+              Undrar ni över något är det bara att höra av er till Siri
+              0707124004 eller Per 0737412421.
+            </p>
+          </div>
         </div>
       </div>
       <div className="flex justify-end w-full">
