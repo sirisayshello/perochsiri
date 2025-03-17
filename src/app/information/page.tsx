@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { FlowerPot } from "../components/FlowerPot";
 import { LocationInfo } from "./LocationInfo";
+import { Line } from "../components/Line";
 
 export default function Information() {
   return (
     <div className="flex flex-col items-center h-full justify-between">
       <div className="flex flex-col items-center max-w-[500px]">
         <h1>Information</h1>
-        <img src="/line.svg" alt="divider" className="w-24 mb-4" />
+        <Line />
         <div className="flex flex-col gap-4 items-center">
           <div className="mt-6">
             <h2>Plats</h2>

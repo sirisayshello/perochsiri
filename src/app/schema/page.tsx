@@ -1,3 +1,4 @@
+import { Line } from "../components/Line";
 import { SparklingWine } from "../components/SparklingWine";
 
 const ListItem = ({ time, info }: { time: string; info: string }) => {
@@ -16,7 +17,7 @@ export default function Schedule() {
     <div className="flex flex-col justify-between h-full">
       <div className="flex items-center flex-col">
         <h1>Dagens Schema</h1>
-        <img src="/line.svg" alt="divider" className="w-24 mb-4" />
+        <Line />
         <ul className="text-4xl flex flex-col mt-6 gap-4 max-w-[500px]">
           <ListItem time="15:00" info="Vigsel, Gathenheilmska Huset" />
           <ListItem time="" info="Bubbel, snacks och trädgårdsmingel" />
