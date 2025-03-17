@@ -1,19 +1,26 @@
+import { Line } from "../components/Line";
 import { WineGlass } from "../components/WineGlass";
-import { useGifts } from "./useGifts";
+import { GiftList } from "./GiftList";
+import { GiftProvider } from "./useGifts";
+
+const WISHLIST_ENABLED = false;
 
 export default async function WishList() {
-  const gifts = await useGifts();
 
   return (
     <div className="flex flex-col justify-between h-full">
       <div className="flex flex-col items-center h-full">
         <h1>Önskelista</h1>
-        <img src="/line.svg" alt="divider" className="w-24 mb-4" />
-        <ul className="text-4xl flex flex-col mt-6 gap-4">
-          {gifts.map((gift) => {
-            return <li key={gift.name}>{gift.name}</li>;
-          })}
-        </ul>
+        <Line />
+        {!WISHLIST_ENABLED && (
+          <p className="text-5xl mt-4">
+            Önskelistan kommer snart, håll ut!
+          </p>)}
+        {WISHLIST_ENABLED && (
+          <GiftProvider>
+            <GiftList />
+          </GiftProvider>
+        )}
       </div>
       <div className="flex justify-end">
         <WineGlass className="w-28" />

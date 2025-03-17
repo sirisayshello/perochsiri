@@ -8,7 +8,7 @@ const Column = ({ children }: { children?: ReactNode }) => (
     <p className="text-4xl text-center">{children}</p>
 )
 
-export default function () {
+export default function Guestlist() {
     const { rsvp } = useRSVP();
     const isAdmin = useIsAdmin();
 

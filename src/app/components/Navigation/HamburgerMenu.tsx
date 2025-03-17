@@ -18,32 +18,28 @@ export const HamburgerMenu = () => {
   return (
     <>
       <div
-        className="flex absolute top-3 right-3 gap-1 flex-col z-10 cursor-pointer"
+        className="flex fixed top-3 right-3 gap-1 flex-col z-10 cursor-pointer"
         onClick={() => setOpen(!open)}
       >
         <div
-          className={`${sharedClasses} ${
-            open ? "rotate-45 translate-y-[8px]" : "rotate-0"
-          } transition-transform`}
+          className={`${sharedClasses} ${open ? "rotate-45 translate-y-[8px]" : "rotate-0"
+            } transition-transform`}
         />
         <div
-          className={`${sharedClasses} ${
-            open ? "opacity-0 translate-x-2" : "opacity-1"
-          } transition-all`}
+          className={`${sharedClasses} ${open ? "opacity-0 translate-x-2" : "opacity-1"
+            } transition-all`}
         />
         <div
-          className={`${sharedClasses}  ${
-            open ? "-rotate-45 -translate-y-[8px]" : "rotate-0"
-          } transition-transform`}
+          className={`${sharedClasses}  ${open ? "-rotate-45 -translate-y-[8px]" : "rotate-0"
+            } transition-transform`}
         />
       </div>
       <nav
         style={{
           boxShadow: open ? "0px 5px 12px var(--accentShadow)" : "",
         }}
-        className={`duration-500 fixed top-0 w-full h-full p-10 bg-background gap-6 right-0 flex transition-all flex-col items-center justify-center ${
-          open ? "" : "translate-x-full"
-        }`}
+        className={`duration-500 fixed top-0 w-full h-full p-10 bg-background gap-6 right-0 flex transition-all flex-col items-center justify-center ${open ? "" : "translate-x-full"
+          }`}
       >
         <NavItem onClick={close} className="text-4xl" href="/rsvp">
           OSA
