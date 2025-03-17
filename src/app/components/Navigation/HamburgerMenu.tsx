@@ -2,11 +2,6 @@ import { useState } from "react";
 import { NavItem } from "./NavItem";
 import { useIsAdmin } from "@/app/hooks/useIsAdmin";
 
-type HamburgerMenuProps = {
-  open: boolean;
-  setOpen: (open: boolean) => void;
-};
-
 export const HamburgerMenu = () => {
   const [open, setOpen] = useState(false);
   const isAdmin = useIsAdmin();
