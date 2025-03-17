@@ -3,7 +3,7 @@ import { WineGlass } from "../components/WineGlass";
 import { GiftList } from "./GiftList";
 import { GiftProvider } from "./useGifts";
 
-const WISHLIST_ENABLED = true;
+const WISHLIST_ENABLED = false;
 
 export default async function WishList() {
 
