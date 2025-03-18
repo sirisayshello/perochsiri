@@ -7,7 +7,7 @@ export const Button = ({
   return (
     <button
       {...props}
-      className="rounded-full bg-accent hover:bg-accent w-full text-white p-2 px-6 mt-4 text-4xl flex justify-center"
+      className="rounded-full bg-accent hover:bg-accent disabled:bg-muted w-full text-white p-2 px-6 mt-4 text-4xl flex justify-center"
     >
       {children}
     </button>
