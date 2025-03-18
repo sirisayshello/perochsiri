@@ -14,9 +14,9 @@ export default function Information() {
             <h2>Plats</h2>
             <p className="font-roboto">
               Vigseln kommer att hållas utomhus i Gathenhielmska husets
-              trädgård. Vid dåligt väder håller vi cermonin inomhus. Middag och
-              fest kommer att vara på Taverna Efessos i Majorna. Mellan vigsel
-              och middag kommer man att ta sig till Efessos på egen hand,
+              trädgård. Vid dåligt väder håller vi istället cermonin inomhus.
+              Middag och fest kommer att vara på Taverna Efessos i Majorna.
+              Mellan vigsel och middag tar man sig på egen hand till Efessos,
               antingen till fots (en promenad på ca 800m) eller med spårvagn.
             </p>
             <LocationInfo />

@@ -23,10 +23,13 @@ type GuestFormProps = {
 
 export const GuestForm = () => {
   const { saveRSVP } = useRSVP();
-  const [numberOfGuests, setNumberOfGuests] = useState<number>();
+  const [numberOfGuests, setNumberOfGuests] = useState<number | string>("");
   const [attending, setAttending] = useState<"yes" | "no" | "no response">(
     "no response"
   );
+  const [loading, setLoading] = useState(false);
+  const hasRsvp = localStorage.getItem("hasRsvp");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleNumberOfGuestsChange = (event: SelectChangeEvent) => {
     if (typeof event.target.value === "string") {
@@ -40,17 +43,24 @@ export const GuestForm = () => {
   };
 
   const handleCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setErrorMessage("");
     setAttending(event.target.value as "yes" | "no");
   };
 
   const guestArray = numberOfGuests ? [...Array(numberOfGuests)] : [];
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    setLoading(true);
     e.preventDefault();
 
     const formData = new FormData(e.target as HTMLFormElement);
 
     if (formData.get("attending") === "no") {
+      if (!formData.get("name")) {
+        setErrorMessage("Fyll i ditt namn tack :)");
+        setLoading(false);
+        return;
+      }
       await saveRSVP([
         {
           name: formData.get("name") as string,
@@ -59,6 +69,10 @@ export const GuestForm = () => {
           allergies: "",
         },
       ]);
+
+      localStorage.setItem("hasRsvp", "no");
+      setLoading(false);
+      setErrorMessage("");
       return;
     }
 
@@ -69,9 +83,36 @@ export const GuestForm = () => {
       attending: true,
     }));
 
+    if (guests.some((guest) => !guest.name)) {
+      setErrorMessage("Fyll i namn på alla i sällskapet tack :)");
+      return;
+    }
+
+    if (guests.some((guest) => !guest.food)) {
+      setErrorMessage(
+        "Nu har du missat att fylla i matpreferenser, det vill vi veta!"
+      );
+      return;
+    }
+
     await saveRSVP(guests);
+    localStorage.setItem("hasRsvp", "yes");
+    setLoading(false);
+    setErrorMessage("");
   };
 
+  if (hasRsvp) {
+    return (
+      <div className="flex items-center flex-col mt-6">
+        <h2 className="text-4xl">Tack!</h2>
+        <p className="text-4xl max-w-[min(80vw,500px)]">
+          {hasRsvp === "yes"
+            ? "Vi ser fram emot att fira med er! Om du har några ändringar eller frågor, är det bara att höra av dig till oss."
+            : "Vad tråkigt att du inte kan komma! Om du ändrar dig är det bara att höra av dig till oss."}
+        </p>
+      </div>
+    );
+  }
   return (
     <form
       className="flex flex-col gap-4 w-full max-w-[500px] mt-6"
@@ -152,21 +193,29 @@ export const GuestForm = () => {
         <div className="flex items-center flex-col">
           <div className="flex gap-4">
             <Label htmlFor="">Namn</Label>
-            <TextInput name="name" required />
+            <TextInput name="name" />
           </div>
         </div>
       )}
 
-      {attending === "yes" && numberOfGuests && numberOfGuests > 0 && (
-        <>
-          <h2>Underbart! Då behöver vi lite info om sällskapet.</h2>
-          {guestArray.map((_, index) => (
-            <AttendingInfo key={`guest-rsvp-${index}`} index={index} />
-          ))}
-        </>
+      {attending === "yes" &&
+        typeof numberOfGuests === "number" &&
+        numberOfGuests > 0 && (
+          <>
+            <h2>Underbart! Då behöver vi lite info om sällskapet.</h2>
+            {guestArray.map((_, index) => (
+              <AttendingInfo key={`guest-rsvp-${index}`} index={index} />
+            ))}
+          </>
+        )}
+
+      {errorMessage && (
+        <p className="text-center font-roboto">{errorMessage}</p>
       )}
 
-      {((attending === "yes" && numberOfGuests && numberOfGuests > 0) ||
+      {((attending === "yes" &&
+        typeof numberOfGuests === "number" &&
+        numberOfGuests > 0) ||
         attending === "no") && <Button type="submit">Skicka</Button>}
     </form>
   );
