@@ -5,7 +5,7 @@ import { useIsAdmin } from "../hooks/useIsAdmin";
 import { useRSVP } from "../rsvp/useRSVP";
 
 const Column = ({ children }: { children?: ReactNode }) => (
-    <p className="text-4xl text-center">{children}</p>
+    <p className="text-base">{children}</p>
 )
 
 export default function Guestlist() {
@@ -21,9 +21,9 @@ export default function Guestlist() {
     const totalVegan = rsvp?.reduce((acc, guest) => acc + (guest.food === 'vegan' ? 1 : 0), 0);
     const total = rsvp.filter((guest) => guest.attending).length;
 
-    return (<div className="flex flex-col items-center h-full">
+    return (<div className="flex flex-col items-center h-full font-roboto ">
         <h1>RSVP Admin</h1>
-        <div className="grid grid-cols-5 w-96 border-b-2 border-accent">
+        <div className="grid grid-cols-[30px,1fr,1fr,1fr,50px] w-96 border-b-2 border-accent">
             <Column>ID</Column>
             <Column>Namn</Column>
             <Column>Mat</Column>
@@ -31,7 +31,7 @@ export default function Guestlist() {
             <Column>Kommer?</Column>
         </div>
         {rsvp?.map((guest) => (
-            <div className="grid grid-cols-5 w-96" key={guest.id}>
+            <div className="grid grid-cols-[30px,1fr,1fr,1fr,30px] w-96" key={guest.id}>
                 <Column>{guest.id}</Column>
                 <Column>{guest.name}</Column>
                 <Column>{guest.food}</Column>
