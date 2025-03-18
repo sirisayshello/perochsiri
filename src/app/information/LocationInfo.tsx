@@ -1,7 +1,6 @@
 export const LocationInfo = () => {
   return (
-    <div className="w-full gap-2 grid grid-cols-[20px,1fr,20px] md:grid-cols-[40px,1fr,1fr,40px] font-roboto uppercase text-sm mt-8 border-accent border-[1px] p-4 rounded-md">
-      {/* <img src="/arrowRight.svg" className="w-9 pt-2" /> */}
+    <div className="w-full gap-2 grid grid-cols-[20px,1fr,20px] md:grid-cols-[20px,1fr,1fr,20px] font-roboto uppercase text-sm mt-8 border-accent border-[1px] p-4 rounded-md">
       <div className="col-start-2 flex justify-center pl-3">
         <div>
           <a
@@ -29,10 +28,6 @@ export const LocationInfo = () => {
           <p>414 55 Göteborg</p>
         </div>
       </div>
-      {/* <img
-        src="/arrowLeft.svg"
-        className="w-9 pt-2 col-start-3 row-start-2 md:row-start-1 md:col-start-4"
-      /> */}
     </div>
   );
 };
