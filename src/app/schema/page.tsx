@@ -4,10 +4,8 @@ import { SparklingWine } from "../components/SparklingWine";
 const ListItem = ({ time, info }: { time: string; info: string }) => {
   return (
     <li className="grid grid-cols-[65px,20px,1fr]">
-      <span >{time}</span> <span>-</span>
-      <span className="leading-[1]">
-        {info}
-      </span>
+      <span>{time}</span> <span>-</span>
+      <span className="leading-[1]">{info}</span>
     </li>
   );
 };
@@ -27,7 +25,7 @@ export default function Schedule() {
           />
           <ListItem time="17:00" info="Middag på Taverna Efessos" />
           <ListItem time="00:00" info="Efterfest på Efessos" />
-          <ListItem time="01:00" info="Efesson stänger" />
+          <ListItem time="01:00" info="Efessos stänger" />
         </ul>
       </div>
       <div>
