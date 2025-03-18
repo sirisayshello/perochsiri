@@ -1,7 +1,7 @@
 import { Line } from "../components/Line";
 import { GuestForm } from "./GuestForm";
 
-const RSVP_ENABLED = true;
+const RSVP_ENABLED = false;
 
 export default function RSVP() {
   return (
