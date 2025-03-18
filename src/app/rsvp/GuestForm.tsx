@@ -9,7 +9,7 @@ import {
   RadioGroup,
   SelectChangeEvent,
 } from "@mui/material";
-import { FormEventHandler, useState } from "react";
+import { FormEventHandler, useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { Label } from "../components/Label";
 import { AttendingInfo } from "./AttendingInfo";
@@ -26,8 +26,20 @@ export const GuestForm = () => {
     "no response"
   );
   const [loading, setLoading] = useState(false);
-  const hasRsvp = localStorage.getItem("hasRsvp");
+  const [ready, setReady] = useState(false);
+  const [hasRsvp, setHasRsvp] = useState<"yes" | "no" | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    setReady(true);
+
+    if (hasRsvp) {
+      return;
+    }
+
+    const hasRsvpStorage = localStorage.getItem("hasRsvp");
+    setHasRsvp(hasRsvpStorage as "yes" | "no");
+  }, []);
 
   const handleNumberOfGuestsChange = (event: SelectChangeEvent) => {
     if (typeof event.target.value === "string") {
@@ -69,6 +81,7 @@ export const GuestForm = () => {
       ]);
 
       localStorage.setItem("hasRsvp", "no");
+      setHasRsvp("no");
       setLoading(false);
       setErrorMessage("");
       return;
@@ -95,9 +108,14 @@ export const GuestForm = () => {
 
     await saveRSVP(guests);
     localStorage.setItem("hasRsvp", "yes");
+    setHasRsvp("yes");
     setLoading(false);
     setErrorMessage("");
   };
+
+  if (!ready) {
+    return null;
+  }
 
   if (hasRsvp) {
     return (
