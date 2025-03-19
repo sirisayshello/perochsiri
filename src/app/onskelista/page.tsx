@@ -7,7 +7,7 @@ const WISHLIST_ENABLED = false;
 
 export default async function WishList() {
   return (
-    <div className="flex flex-col justify-between h-full">
+    <div className="flex flex-col justify-between h-full pt-4">
       <div className="flex flex-col items-center h-full">
         <h1>Önskelista</h1>
         <Line />

@@ -15,7 +15,7 @@ export const HomeLogo = () => {
       <motion.div
         animate={{ x }}
         transition={{ delay }}
-        className="font-fave absolute text-2xl p-2 z-30"
+        className="font-fave absolute text-2xl p-3 z-30"
       >
         Siri & Per
       </motion.div>
