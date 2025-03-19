@@ -18,6 +18,7 @@ import { Select } from "./Select";
 import { useRSVP } from "./useRSVP";
 import { Spinner } from "../components/Spinner";
 import { AnimatePresence, motion } from "framer-motion";
+import { SparklingWine } from "../components/SparklingWine";
 
 export const GuestForm = () => {
   const { saveRSVP } = useRSVP();
@@ -123,18 +124,27 @@ export const GuestForm = () => {
         <h2 className="text-4xl">Tack!</h2>
         <p className="text-4xl max-w-[min(80vw,500px)]">
           {hasRsvp === "yes"
-            ? "Vi ser fram emot att fira med er! Om du har några ändringar eller frågor, är det bara att höra av dig till oss."
+            ? "Vi är så pepp på att fira med er! Om du har några ändringar eller frågor, är det bara att höra av dig till oss."
             : "Vad tråkigt att du inte kan komma! Om du ändrar dig är det bara att höra av dig till oss."}
         </p>
+        <SparklingWine className="w-40 pt-16" />
       </div>
     );
   }
   return (
     <>
       <AnimatePresence>
-        {loading && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ backdropFilter: "blur(5px)" }} className="absolute inset-0 z-10 h-[100vh] flex justify-center items-center">
-          <Spinner />
-        </motion.div>}
+        {loading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{ backdropFilter: "blur(5px)" }}
+            className="absolute inset-0 z-10 h-[100vh] flex justify-center items-center"
+          >
+            <Spinner />
+          </motion.div>
+        )}
       </AnimatePresence>
       <form
         className="flex flex-col gap-4 w-full max-w-[500px] mt-6"
@@ -238,9 +248,12 @@ export const GuestForm = () => {
         {((attending === "yes" &&
           typeof numberOfGuests === "number" &&
           numberOfGuests > 0) ||
-          attending === "no") && <Button type="submit" disabled={loading}>Skicka</Button>}
+          attending === "no") && (
+          <Button type="submit" disabled={loading}>
+            Skicka
+          </Button>
+        )}
       </form>
     </>
-
   );
 };

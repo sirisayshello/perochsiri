@@ -5,7 +5,7 @@ const RSVP_ENABLED = true;
 
 export default function RSVP() {
   return (
-    <div className="flex flex-col items-center h-full">
+    <div className="flex flex-col items-center h-full pt-4">
       <h1>OSA</h1>
       <Line />
       {!RSVP_ENABLED && (
