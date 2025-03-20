@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { Gift, useGifts } from "./useGifts";
 import { v4 as uuidv4 } from "uuid";
 
 const giftApiUrl = "https://baltzar-wedding.web.val.run";
 
 export const useGiftActions = () => {
+  const [loading, setLoading] = useState(false);
   const { updateGifts } = useGifts();
 
   const handleResponse = async (response: Response) => {
@@ -15,6 +17,7 @@ export const useGiftActions = () => {
     const giftsData = await response.json();
 
     updateGifts(giftsData.gifts);
+    setLoading(false);
   };
 
   const getGuestId = () => {
@@ -32,6 +35,7 @@ export const useGiftActions = () => {
 
   const markAsTaken = async (gift: Gift) => {
     const guestId = getGuestId();
+    setLoading(true);
 
     const res = await fetch(giftApiUrl, {
       method: "POST",
@@ -45,6 +49,7 @@ export const useGiftActions = () => {
     if (!isUsersGift(gift)) {
       return;
     }
+    setLoading(true);
 
     const guestId = getGuestId();
 
@@ -62,5 +67,5 @@ export const useGiftActions = () => {
     return gift.guestId === guestId;
   };
 
-  return { markAsTaken, isUsersGift, markAsUntaken };
+  return { markAsTaken, isUsersGift, markAsUntaken, loading };
 };
