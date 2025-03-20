@@ -5,7 +5,7 @@ import { useGiftActions } from "./useGiftActions";
 import { Gift as GiftType } from "./useGifts";
 
 export const Gift = (gift: GiftType) => {
-  const { markAsTaken, isUsersGift, markAsUntaken } = useGiftActions();
+  const { markAsTaken, isUsersGift, markAsUntaken, loading } = useGiftActions();
   const canMarkAsUntaken = isUsersGift(gift) && gift.taken;
   const canMarkAsTaken = !gift.taken;
 
@@ -25,24 +25,29 @@ export const Gift = (gift: GiftType) => {
       <div className={gift.taken ? "line-through" : ""}>
         {gift.name}
         <p className="font-roboto text-sm">{gift.description}</p>
-        <a target="_blank" className="font-roboto text-sm" href={gift.link}>
-          Länk
-        </a>
+        {gift.link && (
+          <a target="_blank" className="font-roboto text-sm" href={gift.link}>
+            Länk
+          </a>
+        )}
       </div>
 
       <div className="flex justify-center items-center">
-        <Button
-          small
-          className={
-            gift.taken
-              ? "flex items-center font-roboto text-sm bg-muted text-background h-10 p-4 rounded-md"
-              : "flex items-center font-roboto text-sm bg-accent text-background h-10 p-4 rounded-md"
-          }
-          onClick={handleClick}
-          disabled={!canMarkAsUntaken && !canMarkAsTaken}
-        >
-          {canMarkAsUntaken ? "Ångrat mig!" : "Den tar jag!"}
-        </Button>
+        {!gift.canBeMany && (
+          <Button
+            small
+            loading={loading}
+            className={
+              gift.taken
+                ? "flex items-center font-roboto text-sm bg-muted text-background h-10 p-4 rounded-md"
+                : "flex items-center font-roboto text-sm bg-accent text-background h-10 p-4 rounded-md"
+            }
+            onClick={handleClick}
+            disabled={!canMarkAsUntaken && !canMarkAsTaken}
+          >
+            {canMarkAsUntaken ? "Ångrat mig!" : "Den tar jag!"}
+          </Button>
+        )}
       </div>
     </li>
   );

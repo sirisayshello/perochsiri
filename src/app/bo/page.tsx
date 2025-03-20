@@ -49,7 +49,7 @@ export default function Admin() {
               <Button type="submit">Logga in</Button>
             </div>
           ) : (
-            <p className="text-4xl">Redan inloggad</p>
+            <p className="text-4xl">Hej Admin!</p>
           )}
         </div>
       </form>
