@@ -76,7 +76,7 @@ export const GuestForm = () => {
         {
           name: formData.get("name") as string,
           attending: false,
-          food: "",
+          food: "-",
           allergies: "",
         },
       ]);
@@ -127,7 +127,13 @@ export const GuestForm = () => {
             ? "Vi är så pepp på att fira med er! Om du har några ändringar eller frågor, är det bara att höra av dig till oss."
             : "Vad tråkigt att du inte kan komma! Om du ändrar dig är det bara att höra av dig till oss."}
         </p>
-        <SparklingWine className="w-40 pt-16" />
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", bounce: 0.65 }}
+        >
+          <SparklingWine className="w-40 pt-16" />
+        </motion.div>
       </div>
     );
   }
