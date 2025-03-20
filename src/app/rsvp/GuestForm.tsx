@@ -9,7 +9,7 @@ import {
   RadioGroup,
   SelectChangeEvent,
 } from "@mui/material";
-import { FormEventHandler, useState } from "react";
+import { FormEventHandler, useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { Label } from "../components/Label";
 import { AttendingInfo } from "./AttendingInfo";
@@ -18,6 +18,7 @@ import { Select } from "./Select";
 import { useRSVP } from "./useRSVP";
 import { Spinner } from "../components/Spinner";
 import { AnimatePresence, motion } from "framer-motion";
+import { SparklingWine } from "../components/SparklingWine";
 
 export const GuestForm = () => {
   const { saveRSVP } = useRSVP();
@@ -26,8 +27,20 @@ export const GuestForm = () => {
     "no response"
   );
   const [loading, setLoading] = useState(false);
-  const hasRsvp = localStorage.getItem("hasRsvp");
+  const [ready, setReady] = useState(false);
+  const [hasRsvp, setHasRsvp] = useState<"yes" | "no" | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    setReady(true);
+
+    if (hasRsvp) {
+      return;
+    }
+
+    const hasRsvpStorage = localStorage.getItem("hasRsvp");
+    setHasRsvp(hasRsvpStorage as "yes" | "no");
+  }, []);
 
   const handleNumberOfGuestsChange = (event: SelectChangeEvent) => {
     if (typeof event.target.value === "string") {
@@ -63,12 +76,13 @@ export const GuestForm = () => {
         {
           name: formData.get("name") as string,
           attending: false,
-          food: "",
+          food: "-",
           allergies: "",
         },
       ]);
 
       localStorage.setItem("hasRsvp", "no");
+      setHasRsvp("no");
       setLoading(false);
       setErrorMessage("");
       return;
@@ -95,9 +109,14 @@ export const GuestForm = () => {
 
     await saveRSVP(guests);
     localStorage.setItem("hasRsvp", "yes");
+    setHasRsvp("yes");
     setLoading(false);
     setErrorMessage("");
   };
+
+  if (!ready) {
+    return null;
+  }
 
   if (hasRsvp) {
     return (
@@ -105,18 +124,33 @@ export const GuestForm = () => {
         <h2 className="text-4xl">Tack!</h2>
         <p className="text-4xl max-w-[min(80vw,500px)]">
           {hasRsvp === "yes"
-            ? "Vi ser fram emot att fira med er! Om du har några ändringar eller frågor, är det bara att höra av dig till oss."
+            ? "Vi är så pepp på att fira med er! Om du har några ändringar eller frågor, är det bara att höra av dig till oss."
             : "Vad tråkigt att du inte kan komma! Om du ändrar dig är det bara att höra av dig till oss."}
         </p>
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", bounce: 0.65 }}
+        >
+          <SparklingWine className="w-40 pt-16" />
+        </motion.div>
       </div>
     );
   }
   return (
     <>
       <AnimatePresence>
-        {loading && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ backdropFilter: "blur(5px)" }} className="absolute inset-0 z-10 h-[100vh] flex justify-center items-center">
-          <Spinner />
-        </motion.div>}
+        {loading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{ backdropFilter: "blur(5px)" }}
+            className="absolute inset-0 z-10 h-[100vh] flex justify-center items-center"
+          >
+            <Spinner />
+          </motion.div>
+        )}
       </AnimatePresence>
       <form
         className="flex flex-col gap-4 w-full max-w-[500px] mt-6"
@@ -220,9 +254,12 @@ export const GuestForm = () => {
         {((attending === "yes" &&
           typeof numberOfGuests === "number" &&
           numberOfGuests > 0) ||
-          attending === "no") && <Button type="submit" disabled={loading}>Skicka</Button>}
+          attending === "no") && (
+          <Button type="submit" disabled={loading}>
+            Skicka
+          </Button>
+        )}
       </form>
     </>
-
   );
 };

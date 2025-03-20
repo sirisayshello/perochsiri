@@ -5,7 +5,7 @@ import { Line } from "../components/Line";
 
 export default function Information() {
   return (
-    <div className="flex flex-col items-center h-full justify-between">
+    <div className="flex flex-col items-center h-full justify-between pt-4">
       <div className="flex flex-col items-center max-w-[500px]">
         <h1>Information</h1>
         <Line />

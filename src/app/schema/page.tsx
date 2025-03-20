@@ -12,7 +12,7 @@ const ListItem = ({ time, info }: { time: string; info: string }) => {
 
 export default function Schedule() {
   return (
-    <div className="flex flex-col justify-between h-full">
+    <div className="flex flex-col justify-between h-full pt-4">
       <div className="flex items-center flex-col">
         <h1>Dagens Schema</h1>
         <Line />
@@ -29,7 +29,7 @@ export default function Schedule() {
         </ul>
       </div>
       <div>
-        <SparklingWine className="w-40" />
+        <SparklingWine className="w-40 pt-4" />
       </div>
     </div>
   );
