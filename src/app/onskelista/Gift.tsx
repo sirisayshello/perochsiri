@@ -26,8 +26,8 @@ export const Gift = (gift: GiftType) => {
         {gift.name}
         <p className="font-roboto text-sm">{gift.description}</p>
         {gift.link && (
-          <a target="_blank" className="font-roboto text-sm" href={gift.link}>
-            Länk
+          <a target="_blank" className="font-roboto text-sm underline" href={gift.link}>
+            Finns här
           </a>
         )}
       </div>
