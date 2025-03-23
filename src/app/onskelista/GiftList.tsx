@@ -8,7 +8,9 @@ export const GiftList = () => {
   const { gifts, status } = useGifts();
 
   if (status === "loading") {
-    return <Spinner />;
+    return <div className="flex justify-center pt-6">
+      <Spinner />
+    </div>
   }
 
   return (
