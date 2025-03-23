@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { Line } from "../components/Line";
 import { WineGlass } from "../components/WineGlass";
@@ -6,7 +6,7 @@ import { useIsAdmin } from "../hooks/useIsAdmin";
 import { GiftList } from "./GiftList";
 import { GiftProvider } from "./useGifts";
 
-const WISHLIST_ENABLED = false;
+const WISHLIST_ENABLED = true;
 
 export default function WishList() {
   const isAdmin = useIsAdmin();
@@ -24,12 +24,12 @@ export default function WishList() {
           <div className="max-w-[500px] w-full">
             <div className="flex flex-col gap-2 mb-4 mt-4">
               <p className="font-roboto text-sm">
-                En lista med grejer vi skulle tycka vore roligt att få, eller bara
-                en lista att använda som inspiration.
+                En lista med grejer vi skulle tycka vore roligt att få, eller
+                bara en lista att använda som inspiration.
               </p>
               <p className="font-roboto text-sm">
-                Har du köpt eller planerar att köpa något på listan? Klicka på "Den
-                tar jag!" så stryks presenten från listan.
+                Har du köpt eller planerar att köpa något på listan? Klicka på
+                "Den tar jag!" så stryks presenten från listan.
               </p>
             </div>
             <GiftProvider>
