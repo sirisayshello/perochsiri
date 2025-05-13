@@ -26,6 +26,30 @@ export default function Information() {
             <h2>Klädsel</h2>
             <p className="font-roboto">Kom sommarfina!</p>
           </div>
+          <div className="mt-6 w-full">
+            <h2>Toastmaster</h2>
+            <p className="font-roboto">
+              Som toastmaster för kvällen står vår fantastiska vän Teo. Han
+              kommer ha koll på dagens schema, vart vi ska och när vi ska. Vill
+              ni hålla tal eller annat kul är det honom ni kontaktar, anmäl
+              gärna ert tal senast 31/5. För att vi ska hinna med allt ätande
+              och skålande under dagen bör ett tal vara max 3 minuter långt.
+            </p>
+            <p className="font-roboto mt-6 mb-2">Kontakta Teo på</p>
+            <a
+              className="underline font-roboto uppercase text-sm"
+              href="tel:0702240757"
+            >
+              0702240757
+            </a>
+            <br />
+            <a
+              className="underline font-roboto uppercase text-sm"
+              href="mailto:teo.kristjansson@gmail.com"
+            >
+              teo.kristjansson@gmail.com
+            </a>
+          </div>
           <div className="mt-6">
             <h2>Presenter</h2>
             <p className="font-roboto">
@@ -41,7 +65,7 @@ export default function Information() {
             <h2>Övrigt</h2>
             <p className="font-roboto">
               Undrar ni över något är det bara att höra av er till Siri
-              0707124004 eller Per 0737412421.
+              0707124004, Per 0737412421 eller toastmaster Teo 0702240757.
             </p>
           </div>
         </div>
